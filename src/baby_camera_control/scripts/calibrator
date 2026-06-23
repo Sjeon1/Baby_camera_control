@@ -1,0 +1,5 @@
+#!/usr/bin/python3
+from baby_camera_control.calibrator import main
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,19 @@
+build/
+install/
+log/
+
+# ROS2 bag recordings
+ptz_test/
+*_test/
+*.db3
+*.mcap
+
+# IDE
+.vscode/
+
+__pycache__/
+*.py[cod]
+
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/

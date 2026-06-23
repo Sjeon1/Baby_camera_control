@@ -1,0 +1,4 @@
+onvif-zeep
+numpy<1.27
+opencv-contrib-python<4.12
+mediapipe==0.10.14

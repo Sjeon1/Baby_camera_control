@@ -1,0 +1,60 @@
+/**:
+  ros__parameters:
+    host: ""        # e.g. "192.168.1.100"
+    username: ""    # ONVIF / RTSP username
+    password: ""    # ONVIF / RTSP password
+
+rtsp_image_publisher:
+  ros__parameters:
+    rtsp_url: ""
+    stream_path: "stream2"
+    frame_id: "tapo_c210_optical_frame"
+    image_topic: "/baby_cam/image_raw"
+    reconnect_delay_sec: 2.0
+    publish_rate_hz: 20.0
+    low_latency_ffmpeg: true
+    capture_buffer_size: 1
+    output_scale: 0.75
+    max_output_width: 640
+
+ptz_controller:
+  ros__parameters:
+    port: 2020
+    command_topic: "/baby_cam/ptz_cmd"
+    profile_index: 0
+    use_relative_move: true
+    min_command_interval_sec: 3.0
+    center_on_start: true
+
+palm_tracker:
+  ros__parameters:
+    image_topic: "/baby_cam/image_raw"
+    tracking_image_topic: "/baby_cam/tracking_image"
+    command_topic: "/baby_cam/ptz_cmd"
+    calibration_file: "~/.ros/baby_cam_calibration.json"
+    center_tolerance_px: 40
+    movement_start_tolerance_px: 40
+    max_pan_delta: 0.15
+    max_tilt_delta: 0.15
+    min_detection_confidence: 0.6
+    min_tracking_confidence: 0.5
+    process_every_n_frames: 1
+    max_processing_fps: 10.0
+    processing_scale: 1.0
+    publish_tracking_every_n_frames: 1
+    min_hand_size_px: 40
+    min_landmark_visibility_ratio: 0.3
+    stable_palm_frames: 1
+    draw_landmarks: true
+    post_move_pause_sec: 3.0
+
+video_recorder:
+  ros__parameters:
+    image_topic: "/baby_cam/tracking_image"
+    command_topic: "/baby_cam/ptz_cmd"
+    output_dir: "~/.ros/baby_cam_recordings"
+    filename_prefix: "baby_cam"
+    output_fps: 20.0
+    video_codec: "mp4v"
+    draw_command_overlay: true
+    stale_command_sec: 2.0
